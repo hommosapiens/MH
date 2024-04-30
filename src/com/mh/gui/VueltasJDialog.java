@@ -1,8 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
- */
 package com.mh.gui;
+
+import com.mh.utils.Utils;
 
 /**
  *
@@ -91,6 +89,7 @@ public class VueltasJDialog extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        Utils.playSound("./Sounds/Vueltas.wav");
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 

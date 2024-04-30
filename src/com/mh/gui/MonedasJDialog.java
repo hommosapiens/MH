@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
- */
 package com.mh.gui;
 
 import com.mh.utils.Utils;
@@ -192,16 +188,14 @@ public class MonedasJDialog extends javax.swing.JDialog {
 
     }//GEN-LAST:event_jButton6ActionPerformed
 
-    public static String addDinero(String saldo, double cantSumar) {
+    private static String addDinero(String saldo, double cantSumar) {
         String[] dinero = saldo.split(" ");
         double total = Double.parseDouble(dinero[0]) + cantSumar;
         String salida = String.valueOf(Utils.redondeoDosDecimales(total));
+        Utils.playSound("./Sounds/AñadirMoneda.wav");
 
-        if (salida.length() == 4) {
-            return salida + " €";
-        } else {
-            return salida + "0 €";
-        }
+        return Utils.keepMonedaFormato(salida);
+
     }
 
     /**

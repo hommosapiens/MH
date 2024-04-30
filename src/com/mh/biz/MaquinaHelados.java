@@ -50,6 +50,16 @@ public class MaquinaHelados {
         return helados;
     }
 
+    public List<Venta> cargarVentas() throws Exception {
+        List<Venta> ventas = null;
+        try (VentaDAOImpl hdi = new VentaDAOImpl();) {
+            ventas = hdi.getVentas();
+        } catch (Exception e) {
+            throw e;
+        }
+        return ventas;
+    }
+
     public double getMonedero() {
         return monedero;
     }

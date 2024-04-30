@@ -38,10 +38,9 @@ public class VentaDAOImpl implements VentaDAO, AutoCloseable {
             ps.setString(2, venta.getNombre());
             ps.setDouble(3, venta.getPrecio());
             ps.setString(4, venta.getTipo());
-            ps.setString(5, venta.getPosicion());
+            ps.setInt(5, venta.getCantidad());
             
             int r = ps.executeUpdate();
-            System.out.println("Exito! Registros afectados: " + r);
             
         } catch (Exception e) {
             throw e;

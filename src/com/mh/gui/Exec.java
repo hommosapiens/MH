@@ -69,8 +69,8 @@ public class Exec {
         do {
             System.out.print("Elija una opción: ");
             opcion = sc.nextLine();
-            if ((!(opcion.equalsIgnoreCase("A") || opcion.equalsIgnoreCase("B") 
-                    || opcion.equalsIgnoreCase("C") || opcion.equalsIgnoreCase("D") 
+            if ((!(opcion.equalsIgnoreCase("A") || opcion.equalsIgnoreCase("B")
+                    || opcion.equalsIgnoreCase("C") || opcion.equalsIgnoreCase("D")
                     || opcion.equalsIgnoreCase("E") || opcion.equalsIgnoreCase("F")
                     || opcion.equalsIgnoreCase("S")))) {
                 System.out.print("Opción incorrecta. ");
@@ -135,7 +135,7 @@ public class Exec {
             System.out.println("Se ha producido un error inesperado. Por favor, contacte con el administrador.");
         }
     }
-    
+
     public static void salir(MaquinaHelados mh) {
         System.out.println("-----------------------------");
         System.out.println("Apagando máquina de helados.....");
