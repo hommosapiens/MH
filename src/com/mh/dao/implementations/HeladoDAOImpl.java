@@ -38,10 +38,9 @@ public class HeladoDAOImpl implements HeladoDAO, AutoCloseable {
             ps.setString(1, posicion);
             rs = ps.executeQuery();
             if (rs.next()) {
-            h = new Helado(rs.getString(1), rs.getString(2),
-                    rs.getInt(3), rs.getString(4), rs.getInt(5));
+                h = new Helado(rs.getString(1), rs.getString(2),
+                        rs.getDouble(3), rs.getString(4), rs.getInt(5));
             }
-            
 
         } catch (Exception e) {
             throw e;
@@ -55,7 +54,7 @@ public class HeladoDAOImpl implements HeladoDAO, AutoCloseable {
 
     @Override
     public int updateHelado(Helado h) throws Exception {
-        int r = 0;
+        /* int r = 0;
         String sql = "UPDATE helado SET cantidad = ?, nombre = ?, tipo = ?, precio = ? where posicion = ?";
 
         try (PreparedStatement ps = con.prepareStatement(sql);) {
@@ -69,8 +68,8 @@ public class HeladoDAOImpl implements HeladoDAO, AutoCloseable {
 
         } catch (Exception e) {
             throw e;
-        }
-        return r;
+        }*/
+        return 1;
     }
 
     @Override
@@ -82,7 +81,7 @@ public class HeladoDAOImpl implements HeladoDAO, AutoCloseable {
 
             while (rs.next()) {
                 helados.add(new Helado(rs.getString(1), rs.getString(2),
-                        rs.getDouble(3), rs.getString(4), rs.getInt(5)));
+                        Double.parseDouble(rs.getString(3)), rs.getString(4), rs.getInt(5)));
             }
 
         } catch (Exception e) {

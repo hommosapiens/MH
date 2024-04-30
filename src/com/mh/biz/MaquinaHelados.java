@@ -18,6 +18,7 @@ public class MaquinaHelados {
 
         try (HeladoDAOImpl hdi = new HeladoDAOImpl(); VentaDAOImpl vdi = new VentaDAOImpl();) {
             h = hdi.getHeladoByPosition(posicion);
+
             if (h == null) {
                 throw new NotValidPositionException();
             } else if (h.getPrecio() > monedero) {
@@ -29,6 +30,7 @@ public class MaquinaHelados {
                 vdi.insertarVenta(v);
                 h.setCantidad(h.getCantidad() - 1);
                 hdi.updateHelado(h);
+
                 this.setMonedero(this.getMonedero() - h.getPrecio());
                 this.setIngresos(this.getIngresos() + h.getPrecio());
             }

@@ -8,18 +8,11 @@ public class Helado {
     private double precio;
     private String tipo;
     private int cantidad = 5;
-
-    public Helado(String posicion, String nombre, double precio, String tipo) {
-        this.posicion = posicion;
-        this.nombre = nombre;
-        this.precio = Utils.redondeoDosDecimales(precio);
-        this.tipo = tipo;
-    }
     
     public Helado(String posicion, String nombre, double precio, String tipo, int cantidad) {
         this.posicion = posicion;
         this.nombre = nombre;
-        this.precio = Utils.redondeoDosDecimales(precio);
+        this.precio = precio;
         this.tipo = tipo;
         this.cantidad = cantidad;
     }
