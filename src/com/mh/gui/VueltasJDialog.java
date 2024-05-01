@@ -4,7 +4,7 @@ import com.mh.utils.Utils;
 
 /**
  *
- * @author Usuario
+ * @author Juan Pedro Rodriguez Aranda
  */
 public class VueltasJDialog extends javax.swing.JDialog {
 

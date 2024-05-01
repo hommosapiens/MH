@@ -10,7 +10,7 @@ import javax.sound.sampled.Clip;
 
 /**
  *
- * @author enriquenogal
+ * @author Juan Pedro Rodriguez Aranda
  */
 public class Utils {
 
@@ -19,7 +19,7 @@ public class Utils {
     }
 
     public static void playSound(String ruta) {
-
+        //Para reproducir sonidos
         try {
             File sound = new File(ruta);
             Clip c = AudioSystem.getClip();
@@ -32,8 +32,10 @@ public class Utils {
 
     }
 
-    public static String keepMonedaFormato(String entrada) {
-
+    public static String keepMonedaFormato(Double dinero) {
+        //Mantiene el formato de monedas (0.00 €)
+        String entrada = String.valueOf(dinero);
+        
         if (entrada.length() == 4) {
             return entrada + " €";
         } else {

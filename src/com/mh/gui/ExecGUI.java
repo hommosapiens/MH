@@ -6,8 +6,6 @@ import com.mh.exceptions.*;
 import com.mh.utils.Utils;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -15,7 +13,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Usuario
+ * @author Juan Pedro Rodriguez Aranda
  */
 public class ExecGUI extends javax.swing.JFrame {
 
@@ -51,7 +49,7 @@ public class ExecGUI extends javax.swing.JFrame {
         jButtonClear = new javax.swing.JButton();
         jButtonVueltas = new javax.swing.JButton();
         jButtonSelect = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jButtonVentas = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -110,6 +108,13 @@ public class ExecGUI extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(jTableHelados);
+        if (jTableHelados.getColumnModel().getColumnCount() > 0) {
+            jTableHelados.getColumnModel().getColumn(0).setResizable(false);
+            jTableHelados.getColumnModel().getColumn(1).setResizable(false);
+            jTableHelados.getColumnModel().getColumn(2).setResizable(false);
+            jTableHelados.getColumnModel().getColumn(3).setResizable(false);
+            jTableHelados.getColumnModel().getColumn(4).setResizable(false);
+        }
 
         jButtonSaldo.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
         jButtonSaldo.setText("Añadir");
@@ -273,11 +278,11 @@ public class ExecGUI extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
-        jButton3.setText("Ventas");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jButtonVentas.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
+        jButtonVentas.setText("Ventas");
+        jButtonVentas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jButtonVentasActionPerformed(evt);
             }
         });
 
@@ -307,7 +312,7 @@ public class ExecGUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonVueltas, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButtonVentas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -333,71 +338,53 @@ public class ExecGUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonSelect, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
+                .addComponent(jButtonVentas, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    //Cargamos los datos al iniciar
+    //Cargamos los helados al iniciar
     private void jTableHeladosAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jTableHeladosAncestorAdded
         // TODO add your handling code here:
 
-        //Centra el los elementos de la tabla
+        //Alinea los elementos de la tabla a la izquierda
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(JLabel.LEFT);
         this.jTableHelados.setDefaultRenderer(Object.class, centerRenderer);
 
         //Leemos los datos
-        DefaultTableModel dtm = (DefaultTableModel) this.jTableHelados.getModel();
         List<Helado> helados = null;
 
         try {
             helados = mh.cargarHelados();
         } catch (Exception ex) {
-            System.out.println("Se ha producido un error inesperado. Por favor, contacte con el administrador.");
+            ex.printStackTrace();
         }
 
-        //Aplicamos en la tabla
+        //Añadimos helados a la tabla
+        DefaultTableModel dtm = (DefaultTableModel) this.jTableHelados.getModel();
+
         for (Helado helado : helados) {
-            Object[] o = {helado.getPosicion(), helado.getNombre(), helado.getPrecio(), helado.getTipo(), helado.getCantidad()};
+            Object[] o = {helado.getPosicion(), helado.getNombre(), Utils.keepMonedaFormato(helado.getPrecio()), helado.getTipo(), helado.getCantidad()};
             dtm.addRow(o);
         }
     }//GEN-LAST:event_jTableHeladosAncestorAdded
 
     private void jButton0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton0ActionPerformed
         // TODO add your handling code here:
-        Utils.playSound("./Sounds/Boton.wav");
-
-        if (this.jLabelPosicion.getText().length() >= 2) {
-            this.jLabelPosicion.setText("0");
-        } else {
-            this.jLabelPosicion.setText(this.jLabelPosicion.getText() + "0");
-        }
-
+        updatePosicion("0");
     }//GEN-LAST:event_jButton0ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        Utils.playSound("./Sounds/Boton.wav");
-
-        if (this.jLabelPosicion.getText().length() >= 2) {
-            this.jLabelPosicion.setText("1");
-        } else {
-            this.jLabelPosicion.setText(this.jLabelPosicion.getText() + "1");
-        }
+        updatePosicion("1");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        Utils.playSound("./Sounds/Boton.wav");
-
-        if (this.jLabelPosicion.getText().length() >= 2) {
-            this.jLabelPosicion.setText("2");
-        } else {
-            this.jLabelPosicion.setText(this.jLabelPosicion.getText() + "2");
-        }
+        updatePosicion("2");
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButtonClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearActionPerformed
@@ -405,16 +392,16 @@ public class ExecGUI extends javax.swing.JFrame {
         Utils.playSound("./Sounds/Boton.wav");
 
         this.jLabelPosicion.setText("- -");
-
     }//GEN-LAST:event_jButtonClearActionPerformed
 
     private void jTableHeladosMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableHeladosMouseReleased
         // TODO add your handling code here:
 
+        //Cogemos la posicion de la fila elegida y la aplicamos
         DefaultTableModel dtm = (DefaultTableModel) this.jTableHelados.getModel();
         int r = this.jTableHelados.getSelectedRow();
-        this.jLabelPosicion.setText(dtm.getValueAt(r, 0) + "");
 
+        this.jLabelPosicion.setText((String) dtm.getValueAt(r, 0));
     }//GEN-LAST:event_jTableHeladosMouseReleased
 
     private void jButtonSaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaldoActionPerformed
@@ -424,15 +411,15 @@ public class ExecGUI extends javax.swing.JFrame {
         MonedasJDialog md = new MonedasJDialog(this, true);
         md.setVisible(true);
 
-        //Actualizamos en UI
+        //Leemos la cantidad introducida en MonedasJDialog
         JPanel p = (JPanel) md.getContentPane().getComponent(0);
         JLabel l = (JLabel) p.getComponent(0);
-        String[] dinero = l.getText().split(" ");
 
+        //Extraemnos la parte numerica y aplicamos al monedero
+        String[] dinero = l.getText().split(" ");
         mh.setMonedero(Double.parseDouble(dinero[0]) + mh.getMonedero());
 
-        this.jLabelSaldo.setText(Utils.keepMonedaFormato(String.valueOf(mh.getMonedero())));
-
+        this.jLabelSaldo.setText(Utils.keepMonedaFormato(mh.getMonedero()));
     }//GEN-LAST:event_jButtonSaldoActionPerformed
 
     private void jButtonVueltasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVueltasActionPerformed
@@ -456,15 +443,10 @@ public class ExecGUI extends javax.swing.JFrame {
                 Utils.playSound("./Sounds/RecibirHelado.wav");
 
                 this.jLabelPosicion.setText("Disfrute su " + conseguido.getNombre() + "!");
-                System.out.println(conseguido.getCantidad());
 
                 updateCantidad(conseguido.getPosicion());
-                System.out.println("aa");
 
                 checkVueltas();
-
-                mh.setMonedero(0);
-                this.jLabelSaldo.setText("0,00 €");
             }
 
         } catch (NotValidPositionException e) {
@@ -484,14 +466,14 @@ public class ExecGUI extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButtonSelectActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jButtonVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVentasActionPerformed
         // TODO add your handling code here:
         Utils.playSound("./Sounds/Boton.wav");
 
         VentasJDialog vd = new VentasJDialog(this, true);
 
         vd.setVisible(true);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jButtonVentasActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
@@ -499,15 +481,30 @@ public class ExecGUI extends javax.swing.JFrame {
         try {
             TimeUnit.SECONDS.sleep(1);
         } catch (InterruptedException ex) {
-            Logger.getLogger(ExecGUI.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         }
     }//GEN-LAST:event_formWindowClosing
 
+    private void updatePosicion(String posicion) {
+        Utils.playSound("./Sounds/Boton.wav");
+
+        //Mantiene solo 2 digitos en la posicion
+        if (this.jLabelPosicion.getText().length() >= 2) {
+            this.jLabelPosicion.setText(posicion);
+        } else {
+            this.jLabelPosicion.setText(this.jLabelPosicion.getText() + posicion);
+        }
+    }
+
     private void updateCantidad(String posicion) {
         DefaultTableModel dtm = (DefaultTableModel) this.jTableHelados.getModel();
-        //Arreglar esto
-        dtm.ge
-        dtm.setValueAt((Integer) dtm.getValueAt(Integer.parseInt(posicion), 4) - 1, Integer.parseInt(posicion), 4);
+
+        //Actualiza la cantidad en la tabla
+        for (int i = 0; i < dtm.getRowCount(); i++) {
+            if (dtm.getValueAt(i, 0).equals(posicion)) {
+                dtm.setValueAt((Integer) dtm.getValueAt(i, 4) - 1, i, 4);
+            }
+        }
     }
 
     private void checkVueltas() {
@@ -518,21 +515,17 @@ public class ExecGUI extends javax.swing.JFrame {
             JPanel p = (JPanel) vd.getContentPane().getComponent(0);
             JLabel l = (JLabel) p.getComponent(0);
 
-            //Actualizamos en UI
-            String[] saldo = l.getText().split(":");
-            l.setText(saldo[0] + " : " + Utils.keepMonedaFormato(String.valueOf(mh.getMonedero())));
+            //Aplicamos el cambio al jlabel de VueltasDialoj
+            l.setText("Sus vueltas : " + Utils.keepMonedaFormato(mh.getMonedero()));
 
             vd.setVisible(true);
 
+            //Reseetamos el monedero
             this.jLabelSaldo.setText("0,00 €");
-
-            //Actualizamos en maquina de helados
             mh.setMonedero(0);
 
         } else {
-            Utils.playSound("./Sounds/Error.wav");
             this.jLabelSaldo.setText("Saldo vacio.");
-
         }
     }
 
@@ -578,10 +571,10 @@ public class ExecGUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton0;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButtonClear;
     private javax.swing.JButton jButtonSaldo;
     private javax.swing.JButton jButtonSelect;
+    private javax.swing.JButton jButtonVentas;
     private javax.swing.JButton jButtonVueltas;
     private javax.swing.JLabel jLabelPosicion;
     private javax.swing.JLabel jLabelPosicionHeader;

@@ -6,6 +6,10 @@ import java.util.List;
 import java.sql.*;
 import java.util.ArrayList;
 
+/**
+ *
+ * @author Juan Pedro Rodriguez Aranda
+ */
 public class HeladoDAOImpl implements HeladoDAO, AutoCloseable {
 
     static {

@@ -8,6 +8,10 @@ import com.mh.exceptions.*;
 import com.mh.utils.Utils;
 import java.util.List;
 
+/**
+ *
+ * @author Juan Pedro Rodriguez Aranda
+ */
 public class MaquinaHelados {
 
     private double monedero = 0;

@@ -1,7 +1,6 @@
 package com.mh.gui;
 
 import com.mh.biz.MaquinaHelados;
-import com.mh.biz.pojo.Helado;
 import com.mh.biz.pojo.Venta;
 import java.util.List;
 import javax.swing.JLabel;
@@ -10,7 +9,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Usuario
+ * @author Juan Pedro Rodriguez Aranda
  */
 public class VentasJDialog extends javax.swing.JDialog {
 
@@ -34,6 +33,9 @@ public class VentasJDialog extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jTableVentas.setBackground(new java.awt.Color(40, 100, 40));
+        jTableVentas.setFont(new java.awt.Font("Impact", 0, 14)); // NOI18N
+        jTableVentas.setForeground(new java.awt.Color(40, 200, 40));
         jTableVentas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -46,7 +48,7 @@ public class VentasJDialog extends javax.swing.JDialog {
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Object.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, true, true
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -57,6 +59,9 @@ public class VentasJDialog extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
+        jTableVentas.setGridColor(new java.awt.Color(40, 150, 40));
+        jTableVentas.setSelectionBackground(new java.awt.Color(40, 150, 40));
+        jTableVentas.setSelectionForeground(new java.awt.Color(70, 255, 70));
         jTableVentas.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 jTableVentasAncestorAdded(evt);
@@ -67,20 +72,24 @@ public class VentasJDialog extends javax.swing.JDialog {
             }
         });
         jScrollPane1.setViewportView(jTableVentas);
+        if (jTableVentas.getColumnModel().getColumnCount() > 0) {
+            jTableVentas.getColumnModel().getColumn(0).setResizable(false);
+            jTableVentas.getColumnModel().getColumn(1).setResizable(false);
+            jTableVentas.getColumnModel().getColumn(2).setResizable(false);
+            jTableVentas.getColumnModel().getColumn(3).setResizable(false);
+            jTableVentas.getColumnModel().getColumn(4).setResizable(false);
+            jTableVentas.getColumnModel().getColumn(5).setResizable(false);
+        }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 795, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 795, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 486, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 486, Short.MAX_VALUE)
         );
 
         pack();
@@ -88,7 +97,8 @@ public class VentasJDialog extends javax.swing.JDialog {
 
     private void jTableVentasAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jTableVentasAncestorAdded
         // TODO add your handling code here:
-        //Centra el los elementos de la tabla
+
+        //Alinea los elementos de la tabla a la izquierda
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(JLabel.LEFT);
         this.jTableVentas.setDefaultRenderer(Object.class, centerRenderer);
@@ -100,10 +110,10 @@ public class VentasJDialog extends javax.swing.JDialog {
         try {
             ventas = mh.cargarVentas();
         } catch (Exception ex) {
-            System.out.println("Se ha producido un error inesperado. Por favor, contacte con el administrador.");
+            ex.printStackTrace();
         }
 
-        //Aplicamos en la tabla
+        //Añadimos ventas a la tabla
         for (Venta venta : ventas) {
             Object[] o = {venta.getFecha_hora(), venta.getPosicion(), venta.getNombre(), venta.getPrecio(), venta.getTipo(), venta.getCantidad()};
             dtm.addRow(o);
