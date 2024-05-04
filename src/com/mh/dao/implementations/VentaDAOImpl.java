@@ -59,7 +59,7 @@ public class VentaDAOImpl implements VentaDAO, AutoCloseable {
     @Override
     public List<Venta> getVentas() throws Exception {
         List<Venta> ventas = new ArrayList<Venta>();
-        String sql = "SELECT fecha_hora, posicion, nombre, precio, tipo, cantidad FROM venta";
+        String sql = "SELECT fecha_hora, posicion, nombre, precio, tipo, cantidad FROM venta order by fecha_hora desc;";
 
         try (PreparedStatement ps = con.prepareStatement(sql); ResultSet rs = ps.executeQuery();) {
 
