@@ -33,7 +33,7 @@ public class VentaDAOImpl implements VentaDAO, AutoCloseable {
     @Override
     public void insertarVenta(Venta venta) throws Exception {
 
-        String sql = "INSERT INTO venta VALUES (datetime('now'),?,?,?,?,?)";
+        String sql = "INSERT INTO venta(fecha_hora,posicion,nombre,precio,tipo,cantidad) VALUES (datetime('now'),?,?,?,?,?)";
         ResultSet rs = null;
 
         try (PreparedStatement ps = con.prepareStatement(sql);) {

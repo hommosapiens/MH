@@ -6,6 +6,6 @@ import java.util.List;
 public interface VentaDAO {
     
     public void insertarVenta(Venta venta) throws Exception;
-    public List<Venta>  getVentas() throws Exception;
+    public List<Venta> getVentas() throws Exception;
     
 }

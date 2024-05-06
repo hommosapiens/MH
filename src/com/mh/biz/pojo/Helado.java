@@ -1,7 +1,5 @@
 package com.mh.biz.pojo;
 
-import com.mh.utils.Utils;
-
 public class Helado {
     private String posicion;
     private String nombre;

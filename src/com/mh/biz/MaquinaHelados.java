@@ -1,9 +1,7 @@
 package com.mh.biz;
 
-import com.mh.biz.pojo.Helado;
-import com.mh.biz.pojo.Venta;
-import com.mh.dao.implementations.HeladoDAOImpl;
-import com.mh.dao.implementations.VentaDAOImpl;
+import com.mh.biz.pojo.*;
+import com.mh.dao.implementations.*;
 import com.mh.exceptions.*;
 import com.mh.utils.Utils;
 import java.util.List;
