@@ -5,6 +5,7 @@
 package com.mh.utils;
 
 import java.io.File;
+import java.text.DecimalFormat;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 
@@ -20,7 +21,7 @@ public class Utils {
 
     public static void playSound(String ruta) {
         //Para reproducir sonidos
-        try {
+        /*try {
             File sound = new File(ruta);
             Clip c = AudioSystem.getClip();
             c.open(AudioSystem.getAudioInputStream(sound));
@@ -28,18 +29,15 @@ public class Utils {
 
         } catch (Exception ex) {
             ex.printStackTrace();
-        }
+        }*/
 
     }
 
     public static String keepMonedaFormato(Double dinero) {
         //Mantiene el formato de monedas (0.00 €)
-        String entrada = String.valueOf(dinero);
-        
-        if (entrada.length() == 4) {
-            return entrada + " €";
-        } else {
-            return entrada + "0 €";
-        }
+        DecimalFormat df = new DecimalFormat(".00");
+        String entrada = String.valueOf(df.format(dinero)) + " €";
+
+        return entrada;
     }
 }

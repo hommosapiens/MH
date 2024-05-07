@@ -26,7 +26,7 @@ public class MonedasJDialog extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        jPanelSaldo = new javax.swing.JPanel();
         jLabelSaldo = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -38,8 +38,8 @@ public class MonedasJDialog extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jPanel1.setBackground(new java.awt.Color(40, 100, 40));
-        jPanel1.setForeground(new java.awt.Color(40, 200, 40));
+        jPanelSaldo.setBackground(new java.awt.Color(40, 100, 40));
+        jPanelSaldo.setForeground(new java.awt.Color(40, 200, 40));
 
         jLabelSaldo.setBackground(new java.awt.Color(40, 100, 40));
         jLabelSaldo.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
@@ -47,25 +47,25 @@ public class MonedasJDialog extends javax.swing.JDialog {
         jLabelSaldo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelSaldo.setText("0.00 €");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelSaldoLayout = new javax.swing.GroupLayout(jPanelSaldo);
+        jPanelSaldo.setLayout(jPanelSaldoLayout);
+        jPanelSaldoLayout.setHorizontalGroup(
+            jPanelSaldoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelSaldoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabelSaldo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        jPanelSaldoLayout.setVerticalGroup(
+            jPanelSaldoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelSaldoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabelSaldo, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         jButton1.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
-        jButton1.setText("0,05 €");
+        jButton1.setText("0.05 €");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -73,7 +73,7 @@ public class MonedasJDialog extends javax.swing.JDialog {
         });
 
         jButton2.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
-        jButton2.setText("0,10 €");
+        jButton2.setText("0.10 €");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -81,7 +81,7 @@ public class MonedasJDialog extends javax.swing.JDialog {
         });
 
         jButton3.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
-        jButton3.setText("0,20 €");
+        jButton3.setText("0.20 €");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -89,7 +89,7 @@ public class MonedasJDialog extends javax.swing.JDialog {
         });
 
         jButton4.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
-        jButton4.setText("0,50 €");
+        jButton4.setText("0.50 €");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -97,7 +97,7 @@ public class MonedasJDialog extends javax.swing.JDialog {
         });
 
         jButton5.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
-        jButton5.setText("1,00 €");
+        jButton5.setText("1.00 €");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
@@ -105,7 +105,7 @@ public class MonedasJDialog extends javax.swing.JDialog {
         });
 
         jButton6.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
-        jButton6.setText("2,00 €");
+        jButton6.setText("2.00 €");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
@@ -119,7 +119,7 @@ public class MonedasJDialog extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelSaldo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -138,7 +138,7 @@ public class MonedasJDialog extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanelSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -197,7 +197,7 @@ public class MonedasJDialog extends javax.swing.JDialog {
         
         interfaz.getMaquina().setMonedero(total);
         
-        interfaz.setJLabelSaldo(Utils.keepMonedaFormato(total));
+        interfaz.setJLabelSaldo();
         this.jLabelSaldo.setText(Utils.keepMonedaFormato(total));
     }
 
@@ -253,6 +253,6 @@ public class MonedasJDialog extends javax.swing.JDialog {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabelSaldo;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanelSaldo;
     // End of variables declaration//GEN-END:variables
 }
