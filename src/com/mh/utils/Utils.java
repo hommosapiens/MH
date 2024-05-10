@@ -35,7 +35,7 @@ public class Utils {
 
     public static String keepMonedaFormato(Double dinero) {
         //Mantiene el formato de monedas (0.00 €)
-        DecimalFormat df = new DecimalFormat(".00");
+        DecimalFormat df = new DecimalFormat("0.00");
         String entrada = String.valueOf(df.format(dinero)) + " €";
 
         return entrada;

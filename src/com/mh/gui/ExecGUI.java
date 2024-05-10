@@ -7,11 +7,6 @@ import com.mh.exceptions.*;
 import com.mh.utils.Utils;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -54,7 +49,9 @@ public class ExecGUI extends javax.swing.JFrame {
         jButtonClear = new javax.swing.JButton();
         jButtonVueltas = new javax.swing.JButton();
         jButtonSelect = new javax.swing.JButton();
-        jButtonVentas = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        Ventas = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -123,7 +120,7 @@ public class ExecGUI extends javax.swing.JFrame {
         jLabelSaldo.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
         jLabelSaldo.setForeground(new java.awt.Color(40, 200, 40));
         jLabelSaldo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelSaldo.setText("0.00 €");
+        jLabelSaldo.setText("0,00 €");
 
         jLabelSaldoHeader.setBackground(new java.awt.Color(40, 100, 40));
         jLabelSaldoHeader.setFont(new java.awt.Font("Impact", 0, 14)); // NOI18N
@@ -270,13 +267,19 @@ public class ExecGUI extends javax.swing.JFrame {
             }
         });
 
-        jButtonVentas.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
-        jButtonVentas.setText("Ventas");
-        jButtonVentas.addActionListener(new java.awt.event.ActionListener() {
+        jMenu1.setText("Menu");
+
+        Ventas.setText("Ventas");
+        Ventas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonVentasActionPerformed(evt);
+                VentasActionPerformed(evt);
             }
         });
+        jMenu1.add(Ventas);
+
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -303,8 +306,7 @@ public class ExecGUI extends javax.swing.JFrame {
                         .addComponent(jButtonSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonVueltas, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanelSaldo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonVentas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanelSaldo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -329,8 +331,6 @@ public class ExecGUI extends javax.swing.JFrame {
                             .addComponent(jButtonClear, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonSelect, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonVentas, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -424,15 +424,6 @@ public class ExecGUI extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButtonSelectActionPerformed
 
-    private void jButtonVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVentasActionPerformed
-        // TODO add your handling code here:
-        Utils.playSound("./Sounds/Boton.wav");
-
-        VentasJDialog vd = new VentasJDialog(this, true);
-
-        vd.setVisible(true);
-    }//GEN-LAST:event_jButtonVentasActionPerformed
-
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
         checkVueltas();
@@ -447,6 +438,15 @@ public class ExecGUI extends javax.swing.JFrame {
         // TODO add your handling code here:/*
         updateHelados();
     }//GEN-LAST:event_formWindowOpened
+
+    private void VentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VentasActionPerformed
+        // TODO add your handling code here:
+        Utils.playSound("./Sounds/Boton.wav");
+
+        VentasJDialog vd = new VentasJDialog(this, true);
+
+        vd.setVisible(true);
+    }//GEN-LAST:event_VentasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -514,8 +514,6 @@ public class ExecGUI extends javax.swing.JFrame {
         //Añadimos helados a la tabla
         DefaultTableModel dtm = (DefaultTableModel) this.jTableHelados.getModel();
 
-        int count = dtm.getRowCount();
-
         for (int i = dtm.getRowCount() - 1; i >= 0; i--) {
             dtm.removeRow(i);
         }
@@ -531,11 +529,6 @@ public class ExecGUI extends javax.swing.JFrame {
             VueltasJDialog vd = new VueltasJDialog(this, true);
 
             vd.setVisible(true);
-
-            //Reseetamos el monedero
-            this.jLabelSaldo.setText("0.00 €");
-            mh.setMonedero(0);
-
         }
     }
 
@@ -566,18 +559,20 @@ public class ExecGUI extends javax.swing.JFrame {
     private List<Helado> helados = null;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem Ventas;
     private javax.swing.JButton jButton0;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButtonClear;
     private javax.swing.JButton jButtonSaldo;
     private javax.swing.JButton jButtonSelect;
-    private javax.swing.JButton jButtonVentas;
     private javax.swing.JButton jButtonVueltas;
     private javax.swing.JLabel jLabelPosicion;
     private javax.swing.JLabel jLabelPosicionHeader;
     private javax.swing.JLabel jLabelSaldo;
     private javax.swing.JLabel jLabelSaldoHeader;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanelPosicion;
     private javax.swing.JPanel jPanelPosicionLine;
     private javax.swing.JPanel jPanelSaldo;

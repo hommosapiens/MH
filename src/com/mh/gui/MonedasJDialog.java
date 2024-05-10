@@ -45,7 +45,7 @@ public class MonedasJDialog extends javax.swing.JDialog {
         jLabelSaldo.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
         jLabelSaldo.setForeground(new java.awt.Color(40, 200, 40));
         jLabelSaldo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelSaldo.setText("0.00 €");
+        jLabelSaldo.setText("0,00 €");
 
         javax.swing.GroupLayout jPanelSaldoLayout = new javax.swing.GroupLayout(jPanelSaldo);
         jPanelSaldo.setLayout(jPanelSaldoLayout);
@@ -65,7 +65,7 @@ public class MonedasJDialog extends javax.swing.JDialog {
         );
 
         jButton1.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
-        jButton1.setText("0.05 €");
+        jButton1.setText("0,05 €");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -73,7 +73,7 @@ public class MonedasJDialog extends javax.swing.JDialog {
         });
 
         jButton2.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
-        jButton2.setText("0.10 €");
+        jButton2.setText("0,10 €");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -81,7 +81,7 @@ public class MonedasJDialog extends javax.swing.JDialog {
         });
 
         jButton3.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
-        jButton3.setText("0.20 €");
+        jButton3.setText("0,20 €");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -89,7 +89,7 @@ public class MonedasJDialog extends javax.swing.JDialog {
         });
 
         jButton4.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
-        jButton4.setText("0.50 €");
+        jButton4.setText("0,50 €");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -97,7 +97,7 @@ public class MonedasJDialog extends javax.swing.JDialog {
         });
 
         jButton5.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
-        jButton5.setText("1.00 €");
+        jButton5.setText("1,00 €");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
@@ -157,44 +157,42 @@ public class MonedasJDialog extends javax.swing.JDialog {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        addDinero(interfaz.getJLabelSaldo(), 0.20);
-
+        addDinero(0.20);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        addDinero(interfaz.getJLabelSaldo(), 0.50);
+        addDinero(0.50);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        addDinero(interfaz.getJLabelSaldo(), 0.10);
+        addDinero(0.10);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        addDinero(interfaz.getJLabelSaldo(), 0.05);
+        addDinero(0.05);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        addDinero(interfaz.getJLabelSaldo(), 1.00);
+        addDinero(1.00);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
-        addDinero(interfaz.getJLabelSaldo(), 2.00);
+        addDinero(2.00);
     }//GEN-LAST:event_jButton6ActionPerformed
     
-    private void addDinero(String saldo, double cantSumar) {
+    private void addDinero(double cantSumar) {
         Utils.playSound("./Sounds/AñadirMoneda.wav");
 
         //Cogemos la parte numerica y sumamos
-        String[] dinero = saldo.split(" ");
-        double total = Double.parseDouble(dinero[0]) + cantSumar;
+        double total = interfaz.getMaquina().getMonedero() + cantSumar;
         
         total = Utils.redondeoDosDecimales(total);
-        
+                
         interfaz.getMaquina().setMonedero(total);
         
         interfaz.setJLabelSaldo();

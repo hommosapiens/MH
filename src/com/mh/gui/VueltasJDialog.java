@@ -103,7 +103,9 @@ public class VueltasJDialog extends javax.swing.JDialog {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
-        this.jLabelVueltas.setText("Sus vueltas: " +interfaz.getJLabelSaldo());
+        this.jLabelVueltas.setText("Sus vueltas: " + Utils.keepMonedaFormato(interfaz.getMaquina().getMonedero()));
+        interfaz.getMaquina().setMonedero(0);
+        interfaz.setJLabelSaldo();
     }//GEN-LAST:event_formWindowActivated
 
     /**
@@ -147,7 +149,7 @@ public class VueltasJDialog extends javax.swing.JDialog {
             }
         });
     }
-    
+
     private ExecGUI interfaz;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
