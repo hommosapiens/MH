@@ -7,7 +7,7 @@ public interface HeladoDAO {
 
     public Helado getHeladoByPosition(String posicion) throws Exception;
 
-    public int updateHelado(Helado h) throws Exception;
+    public void updateHelado(Helado h) throws Exception;
 
     public List<Helado> getListHelado() throws Exception;
 

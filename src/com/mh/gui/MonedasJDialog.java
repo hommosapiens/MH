@@ -185,10 +185,11 @@ public class MonedasJDialog extends javax.swing.JDialog {
         addDinero(2.00);
     }//GEN-LAST:event_jButton6ActionPerformed
     
+    
+    /* ----------------- Mis Metodos ----------------- */
     private void addDinero(double cantSumar) {
         Utils.playSound("./Sounds/AñadirMoneda.wav");
 
-        //Cogemos la parte numerica y sumamos
         double total = interfaz.getMaquina().getMonedero() + cantSumar;
         
         total = Utils.redondeoDosDecimales(total);

@@ -57,7 +57,7 @@ public class HeladoDAOImpl implements HeladoDAO, AutoCloseable {
     }
 
     @Override
-    public int updateHelado(Helado h) throws Exception {
+    public void updateHelado(Helado h) throws Exception {
         int r = 0;
         String sql = "UPDATE helado SET cantidad = ?, nombre = ?, tipo = ?, precio = ? where posicion = ?";
 
@@ -70,10 +70,14 @@ public class HeladoDAOImpl implements HeladoDAO, AutoCloseable {
 
             r = ps.executeUpdate();
 
+            if (r == 0) {
+                throw new Exception();
+            }
+
         } catch (Exception e) {
             throw e;
         }
-        return 1;
+
     }
 
     @Override

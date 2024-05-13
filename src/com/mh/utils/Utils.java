@@ -21,7 +21,7 @@ public class Utils {
 
     public static void playSound(String ruta) {
         //Para reproducir sonidos
-        /*try {
+        try {
             File sound = new File(ruta);
             Clip c = AudioSystem.getClip();
             c.open(AudioSystem.getAudioInputStream(sound));
@@ -29,12 +29,12 @@ public class Utils {
 
         } catch (Exception ex) {
             ex.printStackTrace();
-        }*/
+        }
 
     }
 
     public static String keepMonedaFormato(Double dinero) {
-        //Mantiene el formato de monedas (0.00 €)
+        //Mantiene el formato de monedas (0,00 €)
         DecimalFormat df = new DecimalFormat("0.00");
         String entrada = String.valueOf(df.format(dinero)) + " €";
 
