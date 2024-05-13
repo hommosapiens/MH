@@ -1,6 +1,8 @@
 package com.mh.gui;
 
 import com.mh.utils.Utils;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 
 /**
  *
@@ -34,6 +36,9 @@ public class VueltasJDialog extends javax.swing.JDialog {
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
+            }
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
             }
         });
 
@@ -107,6 +112,12 @@ public class VueltasJDialog extends javax.swing.JDialog {
         interfaz.getMaquina().setMonedero(0);
         interfaz.setJLabelSaldo();
     }//GEN-LAST:event_formWindowActivated
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments

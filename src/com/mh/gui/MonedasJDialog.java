@@ -1,6 +1,8 @@
 package com.mh.gui;
 
 import com.mh.utils.Utils;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 
 /**
  *
@@ -37,6 +39,11 @@ public class MonedasJDialog extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanelSaldo.setBackground(new java.awt.Color(40, 100, 40));
         jPanelSaldo.setForeground(new java.awt.Color(40, 200, 40));
@@ -184,16 +191,24 @@ public class MonedasJDialog extends javax.swing.JDialog {
         // TODO add your handling code here:
         addDinero(2.00);
     }//GEN-LAST:event_jButton6ActionPerformed
-    
-    
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+
+        this.jLabelSaldo.setText(Utils.keepMonedaFormato(this.interfaz.getMaquina().getMonedero()));
+        
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
+    }//GEN-LAST:event_formWindowOpened
+
     /* ----------------- Mis Metodos ----------------- */
     private void addDinero(double cantSumar) {
         Utils.playSound("./Sounds/AñadirMoneda.wav");
-
+        
         double total = interfaz.getMaquina().getMonedero() + cantSumar;
         
         total = Utils.redondeoDosDecimales(total);
-                
+        
         interfaz.getMaquina().setMonedero(total);
         
         interfaz.setJLabelSaldo();

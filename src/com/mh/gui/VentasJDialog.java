@@ -1,6 +1,8 @@
 package com.mh.gui;
 
 import com.mh.biz.pojo.Venta;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.util.List;
 import javax.swing.JLabel;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -34,6 +36,11 @@ public class VentasJDialog extends javax.swing.JDialog {
         jTableVentas = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jTableVentas.setBackground(new java.awt.Color(40, 100, 40));
         jTableVentas.setFont(new java.awt.Font("Impact", 0, 14)); // NOI18N
@@ -123,6 +130,12 @@ public class VentasJDialog extends javax.swing.JDialog {
             dtm.addRow(o);
         }
     }//GEN-LAST:event_jTableVentasAncestorAdded
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+                Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
