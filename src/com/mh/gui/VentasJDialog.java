@@ -71,6 +71,8 @@ public class VentasJDialog extends javax.swing.JDialog {
         jTableVentas.setGridColor(new java.awt.Color(40, 150, 40));
         jTableVentas.setSelectionBackground(new java.awt.Color(40, 150, 40));
         jTableVentas.setSelectionForeground(new java.awt.Color(70, 255, 70));
+        jTableVentas.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jTableVentas.getTableHeader().setReorderingAllowed(false);
         jTableVentas.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 jTableVentasAncestorAdded(evt);
