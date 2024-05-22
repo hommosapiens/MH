@@ -195,7 +195,7 @@ public class MonedasJDialog extends javax.swing.JDialog {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
 
-        this.jLabelSaldo.setText(Utils.keepMonedaFormato(this.interfaz.getMaquina().getMonedero()));
+        this.jLabelSaldo.setText(interfaz.getJLabelSaldo());
         
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);

@@ -16,7 +16,7 @@ public class VentaDAOImpl implements VentaDAO, AutoCloseable {
         try {
             Class.forName(com.mh.utils.Configuration.DRIVER);
         } catch (Exception e) {
-            System.out.println("Error al cargar los drivers");
+            e.printStackTrace();
         }
     }
 
